@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var agent = AgentViewModel()
+    @State private var showingToolActivity = false
 
     var body: some View {
         NavigationStack {
@@ -15,7 +16,7 @@ struct ContentView: View {
                                 ContentUnavailableView(
                                     "Obi Agent",
                                     systemImage: "brain.head.profile",
-                                    description: Text("Frag zum Beispiel: „Was habe ich morgen vor?“")
+                                    description: Text("Frag z. B. nach Kalender, Erinnerungen oder Kontakten.")
                                 )
                                 .padding(.top, 80)
                             }
@@ -68,6 +69,40 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("Obi Agent")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingToolActivity = true
+                    } label: {
+                        Image(systemName: "list.bullet.rectangle")
+                    }
+                    .accessibilityLabel("Tool-Aktivität")
+                }
+            }
+            .sheet(isPresented: $showingToolActivity) {
+                ToolActivityView(activities: agent.toolActivities)
+            }
+            .alert(
+                "Aktion bestätigen",
+                isPresented: Binding(
+                    get: { agent.pendingApproval != nil },
+                    set: { isPresented in
+                        if !isPresented, agent.pendingApproval != nil {
+                            agent.resolvePendingApproval(approved: false)
+                        }
+                    }
+                )
+            ) {
+                Button("Abbrechen", role: .cancel) {
+                    agent.resolvePendingApproval(approved: false)
+                }
+
+                Button("Ausführen") {
+                    agent.resolvePendingApproval(approved: true)
+                }
+            } message: {
+                Text(agent.pendingApproval?.summary ?? "")
+            }
         }
     }
 
@@ -115,6 +150,49 @@ private struct MessageBubble: View {
                     : Color.accentColor.opacity(0.16),
                 in: RoundedRectangle(cornerRadius: 16, style: .continuous)
             )
+    }
+}
+
+private struct ToolActivityView: View {
+    let activities: [ToolActivity]
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                if activities.isEmpty {
+                    ContentUnavailableView(
+                        "Noch keine Tool-Aktivität",
+                        systemImage: "wrench.and.screwdriver"
+                    )
+                } else {
+                    List(activities) { activity in
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(activity.toolName)
+                                    .font(.headline)
+                                Spacer()
+                                Text(activity.risk.rawValue)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            Text(activity.summary)
+                                .font(.subheadline)
+
+                            HStack {
+                                Text(activity.status.rawValue)
+                                Spacer()
+                                Text(activity.createdAt, style: .time)
+                            }
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        }
+                        .padding(.vertical, 2)
+                    }
+                }
+            }
+            .navigationTitle("Tool-Aktivität")
+        }
     }
 }
 
