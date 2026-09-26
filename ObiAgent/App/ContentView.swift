@@ -82,7 +82,7 @@ struct ContentView: View {
                 .font(.footnote)
             Spacer()
         }
-        .foregroundStyle(agent.isModelAvailable ? .secondary : .orange)
+        .foregroundStyle(agent.isModelAvailable ? Color.secondary : Color.orange)
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(.thinMaterial)
