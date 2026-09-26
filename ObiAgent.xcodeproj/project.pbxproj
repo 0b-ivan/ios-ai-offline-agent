@@ -14,6 +14,12 @@
 		B00000000000000000000005 /* CalendarDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000005 /* CalendarDateParser.swift */; };
 		B00000000000000000000006 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000006 /* CalendarStore.swift */; };
 		B00000000000000000000007 /* CalendarTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000007 /* CalendarTool.swift */; };
+		B00000000000000000000008 /* ToolRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000010 /* ToolRuntime.swift */; };
+		B00000000000000000000009 /* ReminderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* ReminderStore.swift */; };
+		B00000000000000000000010 /* ReminderListTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* ReminderListTool.swift */; };
+		B00000000000000000000011 /* CreateReminderTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000013 /* CreateReminderTool.swift */; };
+		B00000000000000000000012 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000014 /* ContactStore.swift */; };
+		B00000000000000000000013 /* ContactLookupTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000015 /* ContactLookupTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		A00000000000000000000007 /* CalendarTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTool.swift; sourceTree = "<group>"; };
 		A00000000000000000000008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A00000000000000000000009 /* ObiAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObiAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00000000000000000000010 /* ToolRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRuntime.swift; sourceTree = "<group>"; };
+		A00000000000000000000011 /* ReminderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderStore.swift; sourceTree = "<group>"; };
+		A00000000000000000000012 /* ReminderListTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListTool.swift; sourceTree = "<group>"; };
+		A00000000000000000000013 /* CreateReminderTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderTool.swift; sourceTree = "<group>"; };
+		A00000000000000000000014 /* ContactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactStore.swift; sourceTree = "<group>"; };
+		A00000000000000000000015 /* ContactLookupTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLookupTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,7 @@
 			children = (
 				A00000000000000000000003 /* AgentViewModel.swift */,
 				A00000000000000000000004 /* ChatMessage.swift */,
+				A00000000000000000000010 /* ToolRuntime.swift */,
 			);
 			path = Agent;
 			sourceTree = "<group>";
@@ -80,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				C00000000000000000000008 /* Calendar */,
+				C00000000000000000000010 /* Reminders */,
+				C00000000000000000000011 /* Contacts */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -92,6 +107,25 @@
 				A00000000000000000000007 /* CalendarTool.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C00000000000000000000010 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000011 /* ReminderStore.swift */,
+				A00000000000000000000012 /* ReminderListTool.swift */,
+				A00000000000000000000013 /* CreateReminderTool.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		C00000000000000000000011 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000014 /* ContactStore.swift */,
+				A00000000000000000000015 /* ContactLookupTool.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 		C00000000000000000000006 /* Supporting */ = {
@@ -187,6 +221,12 @@
 				B00000000000000000000005 /* CalendarDateParser.swift in Sources */,
 				B00000000000000000000006 /* CalendarStore.swift in Sources */,
 				B00000000000000000000007 /* CalendarTool.swift in Sources */,
+				B00000000000000000000008 /* ToolRuntime.swift in Sources */,
+				B00000000000000000000009 /* ReminderStore.swift in Sources */,
+				B00000000000000000000010 /* ReminderListTool.swift in Sources */,
+				B00000000000000000000011 /* CreateReminderTool.swift in Sources */,
+				B00000000000000000000012 /* ContactStore.swift in Sources */,
+				B00000000000000000000013 /* ContactLookupTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
