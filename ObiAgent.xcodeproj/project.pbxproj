@@ -20,7 +20,19 @@
 		B00000000000000000000011 /* CreateReminderTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000013 /* CreateReminderTool.swift */; };
 		B00000000000000000000012 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000014 /* ContactStore.swift */; };
 		B00000000000000000000013 /* ContactLookupTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000015 /* ContactLookupTool.swift */; };
+		B00000000000000000000014 /* ToolRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000016 /* ToolRuntimeTests.swift */; };
+		B00000000000000000000015 /* CalendarDateParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000017 /* CalendarDateParserTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		I00000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D00000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D00000000000000000000002;
+			remoteInfo = ObiAgent;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A00000000000000000000001 /* ObiAgentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObiAgentApp.swift; sourceTree = "<group>"; };
@@ -38,10 +50,20 @@
 		A00000000000000000000013 /* CreateReminderTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderTool.swift; sourceTree = "<group>"; };
 		A00000000000000000000014 /* ContactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactStore.swift; sourceTree = "<group>"; };
 		A00000000000000000000015 /* ContactLookupTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLookupTool.swift; sourceTree = "<group>"; };
+		A00000000000000000000016 /* ToolRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRuntimeTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000017 /* CalendarDateParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateParserTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000018 /* ObiAgentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObiAgentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E00000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E00000000000000000000005 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				C00000000000000000000002 /* ObiAgent */,
+				C00000000000000000000012 /* ObiAgentTests */,
 				C00000000000000000000007 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,10 +159,20 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		C00000000000000000000012 /* ObiAgentTests */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000016 /* ToolRuntimeTests.swift */,
+				A00000000000000000000017 /* CalendarDateParserTests.swift */,
+			);
+			path = ObiAgentTests;
+			sourceTree = "<group>";
+		};
 		C00000000000000000000007 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000009 /* ObiAgent.app */,
+				A00000000000000000000018 /* ObiAgentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +199,26 @@
 			productReference = A00000000000000000000009 /* ObiAgent.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D00000000000000000000003 /* ObiAgentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = G00000000000000000000003 /* Build configuration list for PBXNativeTarget "ObiAgentTests" */;
+			buildPhases = (
+				E00000000000000000000004 /* Sources */,
+				E00000000000000000000005 /* Frameworks */,
+				E00000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				H00000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = ObiAgentTests;
+			packageProductDependencies = (
+			);
+			productName = ObiAgentTests;
+			productReference = A00000000000000000000018 /* ObiAgentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -178,6 +231,10 @@
 				TargetAttributes = {
 					D00000000000000000000002 = {
 						CreatedOnToolsVersion = 26.0;
+					};
+					D00000000000000000000003 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = D00000000000000000000002;
 					};
 				};
 			};
@@ -195,12 +252,20 @@
 			projectRoot = "";
 			targets = (
 				D00000000000000000000002 /* ObiAgent */,
+				D00000000000000000000003 /* ObiAgentTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E00000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E00000000000000000000006 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -230,7 +295,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E00000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00000000000000000000014 /* ToolRuntimeTests.swift in Sources */,
+				B00000000000000000000015 /* CalendarDateParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		H00000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D00000000000000000000002 /* ObiAgent */;
+			targetProxy = I00000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F00000000000000000000001 /* Debug */ = {
@@ -273,7 +355,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ObiAgent/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.obivan.ObiAgent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -292,7 +374,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ObiAgent/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.obivan.ObiAgent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -300,6 +382,40 @@
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F00000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.obivan.ObiAgentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ObiAgent.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ObiAgent";
+			};
+			name = Debug;
+		};
+		F00000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.obivan.ObiAgentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ObiAgent.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ObiAgent";
 			};
 			name = Release;
 		};
@@ -320,6 +436,15 @@
 			buildConfigurations = (
 				F00000000000000000000003 /* Debug */,
 				F00000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		G00000000000000000000003 /* Build configuration list for PBXNativeTarget "ObiAgentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00000000000000000000005 /* Debug */,
+				F00000000000000000000006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
