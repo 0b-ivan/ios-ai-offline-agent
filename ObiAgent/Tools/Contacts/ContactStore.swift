@@ -46,16 +46,21 @@ actor ContactStore {
                 ? "Unnamed contact"
                 : components.joined(separator: " ")
 
-            return ContactSummary(
-                displayName: displayName,
-                phoneNumbers: contact.phoneNumbers
+            let phoneNumbers = Array(
+                contact.phoneNumbers
                     .map { $0.value.stringValue }
                     .prefix(5)
-                    .map(String.init),
-                emailAddresses: contact.emailAddresses
+            )
+            let emailAddresses = Array(
+                contact.emailAddresses
                     .map { String($0.value) }
                     .prefix(5)
-                    .map(String.init)
+            )
+
+            return ContactSummary(
+                displayName: displayName,
+                phoneNumbers: phoneNumbers,
+                emailAddresses: emailAddresses
             )
         }
     }
