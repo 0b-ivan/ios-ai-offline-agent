@@ -6,6 +6,7 @@ struct CalendarTool: Tool {
     let description: String
 
     private let store: CalendarStore
+    private let runtime: ToolRuntime
 
     @Generable
     struct Arguments {
@@ -13,8 +14,13 @@ struct CalendarTool: Tool {
         let date: String
     }
 
-    init(store: CalendarStore, now: Date = .now) {
+    init(
+        store: CalendarStore,
+        runtime: ToolRuntime,
+        now: Date = .now
+    ) {
         self.store = store
+        self.runtime = runtime
         self.description = """
         Reads the person's calendar events for one day.
         Use this whenever a question depends on their calendar.
@@ -27,29 +33,54 @@ struct CalendarTool: Tool {
             return "The calendar date '\(arguments.date)' is invalid. Use yyyy-MM-dd."
         }
 
-        let events = try await store.events(on: day)
         let dayLabel = day.formatted(date: .complete, time: .omitted)
 
-        guard !events.isEmpty else {
-            return "No calendar events found for \(dayLabel)."
-        }
+        await runtime.record(
+            toolName: name,
+            risk: .read,
+            status: .started,
+            summary: "Read calendar events for \(dayLabel)."
+        )
 
-        return events.map { event in
-            if event.isAllDay {
-                return "All day — \(event.title) [\(event.calendarTitle)]"
+        do {
+            let events = try await store.events(on: day)
+
+            await runtime.record(
+                toolName: name,
+                risk: .read,
+                status: .completed,
+                summary: "Returned \(events.count) calendar event(s) for \(dayLabel)."
+            )
+
+            guard !events.isEmpty else {
+                return "No calendar events found for \(dayLabel)."
             }
 
-            let start = event.startDate.formatted(
-                date: .omitted,
-                time: .shortened
-            )
-            let end = event.endDate.formatted(
-                date: .omitted,
-                time: .shortened
-            )
+            return events.map { event in
+                if event.isAllDay {
+                    return "All day — \(event.title) [\(event.calendarTitle)]"
+                }
 
-            return "\(start)–\(end) — \(event.title) [\(event.calendarTitle)]"
+                let start = event.startDate.formatted(
+                    date: .omitted,
+                    time: .shortened
+                )
+                let end = event.endDate.formatted(
+                    date: .omitted,
+                    time: .shortened
+                )
+
+                return "\(start)–\(end) — \(event.title) [\(event.calendarTitle)]"
+            }
+            .joined(separator: "\n")
+        } catch {
+            await runtime.record(
+                toolName: name,
+                risk: .read,
+                status: .failed,
+                summary: error.localizedDescription
+            )
+            throw error
         }
-        .joined(separator: "\n")
     }
 }

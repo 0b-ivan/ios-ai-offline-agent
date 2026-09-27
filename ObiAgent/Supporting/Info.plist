@@ -24,6 +24,10 @@
     <true/>
     <key>NSCalendarsFullAccessUsageDescription</key>
     <string>Obi Agent reads your calendar only when you ask questions about your schedule.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>Obi Agent searches contacts only when you ask for contact information.</string>
+    <key>NSRemindersFullAccessUsageDescription</key>
+    <string>Obi Agent reads reminders and creates them only after you approve the action.</string>
     <key>UIApplicationSupportsIndirectInputEvents</key>
     <true/>
     <key>UILaunchScreen</key>
